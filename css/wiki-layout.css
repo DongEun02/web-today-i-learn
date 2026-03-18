@@ -1,3 +1,20 @@
+/* 변수 */
+:root {
+  --primary-color: #4a7c59;
+  --accent-color: #c87d39;
+  --nav-bg-color: rgba(255, 252, 245, 0.92);
+  --hero-bg-color: linear-gradient(180deg, #f5f8ef 0%, #fffaf1 100%);
+  --card-bg-color: #fffdfa;
+  --divider-color: #e7e1d6;
+  --font-default-color: #2f382f;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(200, 125, 57, 0.1), transparent 20%),
+    linear-gradient(180deg, #fffaf1 0%, #f9fbf6 45%, #fffdf8 100%);
+}
+
 /* 상단 내비게이션 */
 .top-nav {
   position: sticky;
@@ -13,7 +30,7 @@
 }
 
 .nav-logo {
-  font-family: "Jua", serif;
+  font-family: 'Jua', serif;
   font-size: 1.4rem;
   color: var(--primary-color);
 }
@@ -40,7 +57,7 @@
   display: flex;
   justify-content: center;
   padding: 64px 32px;
-  background-color: var(--hero-bg-color);
+  background: var(--hero-bg-color);
 }
 
 .profile-card {
@@ -107,14 +124,25 @@ main {
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  gap: 12px;
 }
 
 .gallery-grid img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 4px;
+  border: 2px solid #e7e1d6;
+  border-radius: 10px;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.gallery-grid img:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 20px rgba(47, 56, 47, 0.12);
 }
 
 /* 인생 작품 카드 */
@@ -147,6 +175,12 @@ main {
   object-fit: cover;
 }
 
+.work-thumbnail.video-thumbnail {
+  width: min(100%, 480px);
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
 .work-info h3 {
   font-size: 1.2rem;
   margin-bottom: 8px;
@@ -165,25 +199,34 @@ main {
 }
 
 .til-item {
-  padding: 20px;
-  border-left: 3px solid var(--primary-color);
-  background-color: var(--card-bg-color);
-  border-radius: 0 8px 8px 0;
+  position: relative;
+  padding: 22px 24px 22px 28px;
+  border: 1px solid var(--divider-color);
+  border-left: 6px solid var(--primary-color);
+  background: linear-gradient(135deg, #fffdf7 0%, var(--card-bg-color) 100%);
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(76, 108, 72, 0.08);
 }
 
 .til-item time {
-  font-size: 0.85rem;
-  color: #999;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background-color: rgba(200, 125, 57, 0.12);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-color);
 }
 
 .til-item h3 {
-  font-size: 1.1rem;
-  margin: 8px 0;
+  font-size: 1.2rem;
+  margin: 14px 0 10px;
 }
 
 .til-item p {
-  color: #666;
-  line-height: 1.6;
+  color: #5d6658;
+  line-height: 1.75;
 }
 
 /* 방명록 */
@@ -222,12 +265,12 @@ main {
   font-size: 0.9rem;
 }
 
-.comment-buttons button[type="button"] {
+.comment-buttons button[type='button'] {
   background-color: var(--primary-color);
   color: #fff;
 }
 
-.comment-buttons button[type="reset"] {
+.comment-buttons button[type='reset'] {
   background-color: #eee;
   color: #666;
 }
@@ -292,80 +335,111 @@ footer {
 .til-form {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 24px;
+  gap: 18px;
+  padding: 28px;
   margin-bottom: 32px;
-  border: 1px solid var(--divider-color);
-  border-radius: 8px;
-  background-color: var(--card-bg-color);
+  border: 1px solid rgba(74, 124, 89, 0.15);
+  border-radius: 22px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(200, 125, 57, 0.14),
+      transparent 26%
+    ),
+    linear-gradient(180deg, #fffdf9 0%, var(--card-bg-color) 100%);
+  box-shadow: 0 18px 40px rgba(37, 55, 43, 0.08);
 }
 
 .til-form .form-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .til-form label {
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   font-weight: 700;
-  color: #555;
+  color: #495640;
 }
 
 .til-form input,
 .til-form textarea {
-  padding: 10px 12px;
-  border: 1px solid var(--divider-color);
-  border-radius: 6px;
+  padding: 14px 16px;
+  border: 1px solid #d8e0d4;
+  border-radius: 14px;
+  background-color: rgba(255, 255, 255, 0.9);
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
+  color: var(--font-default-color);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.til-form input::placeholder,
+.til-form textarea::placeholder {
+  color: #9ba394;
+}
+
+.til-form input:focus,
+.til-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(74, 124, 89, 0.14);
+  transform: translateY(-1px);
 }
 
 .til-form textarea {
-  min-height: 80px;
+  min-height: 140px;
   resize: vertical;
 }
 
 .til-form .form-actions {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   justify-content: flex-end;
+  margin-top: 4px;
 }
 
 .til-form button {
-  padding: 8px 20px;
-  border: none;
-  border-radius: 6px;
+  min-width: 108px;
+  padding: 12px 20px;
+  border: 1px solid transparent;
+  border-radius: 999px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
-.til-form button[type="submit"] {
-  background-color: var(--primary-color);
-  color: #fff;
+.til-form button:hover {
+  transform: translateY(-1px);
 }
 
-.til-form button[type="reset"] {
-  background-color: #eee;
-  color: #666;
+.til-form button[type='submit'] {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #6a9a77 100%);
+  color: #fffef7;
+  box-shadow: 0 10px 24px rgba(74, 124, 89, 0.22);
+}
+
+.til-form button[type='reset'] {
+  border-color: #d6ddd1;
+  background-color: rgba(255, 255, 255, 0.75);
+  color: #5b6655;
 }
 
 /* 영상 삽입 */
 .work-card iframe,
 .work-card video {
   width: 100%;
-  max-width: 480px;
+  height: 100%;
   aspect-ratio: 16 / 9;
   border: none;
   border-radius: 4px;
-}
-
-/* 변수 */
-:root {
-  --primary-color: #4a7c59;
-  --nav-bg-color: #fff;
-  --hero-bg-color: #f8faf8;
-  --card-bg-color: #fafafa;
-  --divider-color: #e8e8e8;
-  --font-default-color: #333;
+  display: block;
 }
